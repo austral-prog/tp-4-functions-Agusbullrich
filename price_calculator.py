@@ -11,6 +11,10 @@ def apply_tax(price, tax_pct):
 # ---- Funciones a implementar ----
 
 def final_price(price, quantity, discount_pct, tax_pct):
+    price = price * quantity
+    price = apply_discount(price, discount_pct)
+    price = apply_tax(price, tax_pct)
+    return round(price, 2)
     """
     Calcula el precio final de una compra.
     Debe USAR las funciones apply_discount y apply_tax.
@@ -31,4 +35,8 @@ def best_deal(price_a, qty_a, disc_a, price_b, qty_b, disc_b, tax_pct):
     Si son iguales, retorna "A".
     Debe USAR la función final_price para resolver el ejercicio.
     """
-    return "ANSWER HERE"  # Remove this line and implement
+
+    if final_price(price_a, qty_a, disc_a, tax_pct) > final_price(price_b, qty_b, disc_b, tax_pct):
+        return "B"
+    else:
+        return "A"
